@@ -1,0 +1,46 @@
+button {
+    margin-top: 32px;
+    margin-left: -5%;
+    font-style: italic;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+input::placeholder {
+    font-style: italic;
+}
+
+.jumbotron {
+    border-radius: 20px;
+}
+
+h2 {
+    font-weight: bold;
+    color: grey;
+    font-style: italic;
+    margin-left: 10px;
+}
+
+i {
+    white-space:nowrap ;
+    margin-left: 5px;
+    color: lightslategray;
+    font-weight: 500;
+
+}
+.spinner {
+    text-align: center;
+    display: flex;
+    font-weight: bold;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: gray;
+    top: 0;
+    left: 0;
+    padding: 10px;
+    opacity: .5;
+    z-index: 1000;
+}

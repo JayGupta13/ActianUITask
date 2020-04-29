@@ -1,0 +1,42 @@
+<section class="container mt-5">
+    <div class="jumbotron">
+        <div class="container">
+            <div class="d-flex">
+                <div class="col-md-12">
+                    <h2 class="mb-5">Search Location By Country Name</h2>
+                    <form [formGroup]="searchForm" (ngSubmit)="onSubmit()">
+                        <div class="d-flex">
+                            <div class="form-group input-group-lg col-md-10 ">
+                                <label><i>Search here </i></label>
+                                <input type="text" formControlName="searchInputForm" class="form-control"
+                                    [ngClass]="{ 'is-invalid': submitted && f.searchInputForm.errors }"
+                                    placeholder="Enter Country name" />
+                                <div *ngIf="f.searchInputForm.errors" class="invalid-feedback text-danger">
+                                    <div *ngIf="f.searchInputForm.errors.required">Country Name is required</div>
+                                </div>
+                                <div class="text-danger">
+                                    {{errorMessage}}
+                                </div>
+                            </div>
+                            <div class="form-group  col-md-4 ">
+                                <button type="button" class="btn btn-primary btn-lg px-4" (click)="onSubmit()"
+                                    [disabled]="!searchForm.valid">Submit</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- spinner loading -->
+<div class="spinner" *ngIf="isSpinner">
+    <div class="spinner-border text-primary"></div>
+</div>
+
+<!-- Dashboard component loading -->
+
+<div *ngIf="loadDashboard">
+    <app-dashboard></app-dashboard>
+</div>
