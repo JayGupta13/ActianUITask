@@ -5,7 +5,7 @@
 
 export const environment = {
   production: false,
-  LOCATION_API: "/api/geocode/json?sensor=false&address=Munich"
+  LOCATION_API: "/api/geocode/json?sensor=false&address="
 };
 
 /*

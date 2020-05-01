@@ -15,11 +15,13 @@ export class DashboardComponent implements OnInit {
 
   ngOnInit() {
     this.locationService.updateCountryName.subscribe(name => this.updatedCountryName = name);
-    this.locationService.updateLocationCoordinates.subscribe(response => this.updatedLocationCoordinates = response);
-
-    this.updatedLocationCoordinates.results.forEach(element => {
-      this.latitude = element.geometry.location.lat;
-      this.longitude = element.geometry.location.lng;
+    this.updatedLocationCoordinates = this.locationService.updateLocationCoordinates.subscribe(res => {
+      this.updatedLocationCoordinates = res;
+      this.updatedLocationCoordinates.results.forEach(element => {
+        this.latitude = element.geometry.location.lat;
+        this.longitude = element.geometry.location.lng;
+      });
     });
   }
 }
+

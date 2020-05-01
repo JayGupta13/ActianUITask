@@ -6,7 +6,7 @@ import { environment } from '../../environments/environment';
 
 
 
-const API_ENDPONIT = environment.LOCATION_API;
+const API_ENDPONIT: any = environment.LOCATION_API;
 
 @Injectable({
   providedIn: 'root'
@@ -16,26 +16,27 @@ export class LocationService {
   constructor(private http: HttpClient) { }
 
   private initialCountryName = new BehaviorSubject<any>('');
-  updateCountryName = this.initialCountryName.asObservable();
+  public updateCountryName = this.initialCountryName.asObservable();
 
   getCountryName(countryName) {
     this.initialCountryName.next(countryName);
   }
 
   private initialLocationCoordinates = new BehaviorSubject<any>('');
-  updateLocationCoordinates = this.initialLocationCoordinates.asObservable();
+  public updateLocationCoordinates = this.initialLocationCoordinates.asObservable();
 
   getLocationCoordinates(params) {
-    this.initialLocationCoordinates.next(params)
+    this.initialLocationCoordinates.next(params);
   }
 
   getLocationData(countryName): Observable<any> {
-    const apiURL = API_ENDPONIT + "&address=" + countryName;
+    const apiURL = API_ENDPONIT + countryName;
     const localData = this.cachs$.get(apiURL);
     if (localData) {
       return of(localData);
     } else {
-      return this.http.get<any>(apiURL).pipe(tap(res => this.cachs$.set(apiURL, res)));
+      return this.http.get<any>(apiURL)
+        .pipe(tap(res => this.cachs$.set(apiURL, res)));
     }
   }
 }
